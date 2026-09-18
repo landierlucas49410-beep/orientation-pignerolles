@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CO Pignerolles - Inscription</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header><h1>🧭 CO PIGNEROLLES</h1></header>
+    <div class="content">
+      <form id="form-inscription">
+        <h3>Identité du Binôme</h3><br>
+        <div class="form-group">
+          <label>Élève 1 - Nom & Prénom</label>
+          <input type="text" id="e1" required placeholder="ex: Dupont Jean">
+        </div>
+        <div class="form-group">
+          <label>Élève 2 - Nom & Prénom</label>
+          <input type="text" id="e2" required placeholder="ex: Martin Sophie">
+        </div>
+        <div class="form-group">
+          <label>Groupe horaire</label>
+          <select id="groupe" required>
+            <option value="H5-H6">H5-H6</option>
+            <option value="H7-H8">H7-H8</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Numéro de Binôme (1 à 15)</label>
+          <input type="number" id="numBinome" min="1" max="15" required placeholder="1">
+        </div>
+        <button type="submit" class="btn">PROCÉDER AU DÉPART</button>
+      </form>
+    </div>
+  </div>
+  <script src="js/config.js"></script>
+  <script>
+    document.getElementById('form-inscription').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const num = parseInt(document.getElementById('numBinome').value);
+      const parcoursKey = "P" + (num < 10 ? "0" + num : num);
+      
+      const session = {
+        e1: document.getElementById('e1').value,
+        e2: document.getElementById('e2').value,
+        groupe: document.getElementById('groupe').value,
+        binomeId: num,
+        parcoursId: parcoursKey,
+        steps: CONFIG.PARCOURS[parcoursKey],
+        currentIndex: 0,
+        scans: [],
+        startTime: null,
+        endTime: null
+      };
+      
+      localStorage.setItem('co_session', JSON.stringify(session));
+      window.location.href = 'mission.html';
+    });
+  </script>
+</body>
+</html>

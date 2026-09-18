@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CO Pignerolles - Mission</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+</head>
+<body>
+  <div class="app-container">
+    <header><h1>🧭 MISSION CO</h1></header>
+    <div class="content">
+      
+      <div class="timer-box">
+        <p>TEMPS ÉCOULÉ</p>
+        <div class="time" id="chrono">00:00</div>
+      </div>
+
+      <div class="target-box" id="target-container">
+        <p>PROCHAINE BALISE</p>
+        <div class="code" id="next-balise">START</div>
+        <p style="font-size:0.8rem; margin-top:5px;">Consultez votre carte papier avant de vous déplacer.</p>
+      </div>
+
+      <button id="btn-scan" class="btn">📷 SCANNER LE QR CODE</button>
+      
+      <div id="scanner-wrapper" style="display:none; margin-top:15px;">
+        <div id="reader"></div>
+        <button id="btn-cancel" class="btn btn-danger" style="margin-top:10px;">Annuler</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/mission.js"></script>
+</body>
+</html>
